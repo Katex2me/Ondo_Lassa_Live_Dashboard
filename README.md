@@ -62,8 +62,8 @@ docker-compose up -d
 - 🗺️ Regional distribution maps
 - 📱 Responsive mobile design
 - 🔄 Live data updates via WebSocket
-- 📲 Alert notifications
-- 🔐 Secure API authentication
+- 📢 Alert notifications
+- 🔒 Secure API authentication
 
 ## API Documentation
 
