@@ -1,0 +1,29 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+      types: [opened, synchronize, reopened]
+        issues:
+            types: [opened, edited]
+
+            jobs:
+              claude-review:
+                  runs-on: ubuntu-latest
+                      permissions:
+                            contents: read
+                                  pull-requests: write
+                                        issues: write
+
+                                                steps:
+                                                      - name: Checkout code
+                                                              uses: actions/checkout@v4
+                                                                      with:
+                                                                                fetch-depth: 0
+
+                                                                                            - name: Claude Code Review
+                                                                                                    uses: Anthropic/claude-code-action@v1
+                                                                                                            with:
+                                                                                                                      github-token: ${{ secrets.GITHUB_TOKEN }}
+                                                                                                                                task: "Review this pull request for code quality, potential bugs, security issues, and best practices. Provide specific suggestions for improvements."
+                                                                                                                                        env:
+                                                                                                                                                  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
